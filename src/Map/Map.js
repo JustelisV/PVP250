@@ -1,93 +1,122 @@
 import React, { useRef, useState, useEffect } from "react"
 import "./Map.css";
 import MapContext from "./MapContext";
+import { fromLonLat } from 'ol/proj';
+import Feature from 'ol/Feature';
+import Point from 'ol/geom/Point';
+import { Vector as VectorLayer } from 'ol/layer';
+import { Vector as VectorSource } from 'ol/source';
+import geolocated from 'react-geolocated';
 import * as ol from "ol";
-import Feature from 'ol/Feature.js';
-import Geolocation from 'ol/Geolocation.js';
-import Point from 'ol/geom/Point.js';
-import View from 'ol/View.js';
+import {easeOut} from 'ol/easing';
+import {easeIn} from 'ol/easing';
+import Geolocation from 'ol/Geolocation';
 import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const Map = ({ children, zoom, center }) => {
-  const mapRef = useRef();
-  const [map, setMap] = useState(null);
-  const view = new View({
-    center: [0, 0],
-    zoom: 2,
-  });
+	const mapRef = useRef();
+	const [map, setMap] = useState(null);
 
-  const geolocation = new Geolocation({
-    // enableHighAccuracy must be set to true to have the heading value.
-    trackingOptions: {
-      enableHighAccuracy: true,
-    },
-    projection: view.getProjection(),
-  });
-  geolocation.setTracking(true);
+	// on component mount
+	useEffect(() => {
+		let options = {
+			view: new ol.View({ zoom, center }),
+			layers: [],
+			controls: [],
+			overlays: []
+		};
 
-  
-  
-  const positionFeature = new Feature();
-positionFeature.setStyle(
-  new Style({
-    image: new CircleStyle({
-      radius: 6,
-      fill: new Fill({
-        color: '#3399CC',
-      }),
-      stroke: new Stroke({
-        color: '#fff',
-        width: 2,
-      }),
-    }),
-  })
-);
-geolocation.on('change:position', function () {
-  const coordinates = geolocation.getPosition();
-  positionFeature.setGeometry(coordinates ? new Point(coordinates) : null);
-});
+		let mapObject = new ol.Map(options);
+		mapObject.setTarget(mapRef.current);
+		setMap(mapObject);
 
-  
-  // handle geolocation error.
-  geolocation.on('error', function (error) {
-    const info = document.getElementById('info');
-    info.innerHTML = error.message;
-    info.style.display = '';
-  });
-  
-  const accuracyFeature = new Feature();
-  geolocation.on('change:accuracyGeometry', function () {
-    accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
-  });
-  // on component mount
-  useEffect(() => {
-    let options = {
-      view: new ol.View({ zoom, center }),
-      layers: [],
-      controls: [],
-      overlays: []
+		return () => mapObject.setTarget(undefined);
+	}, []);
+
+      // geolocation change handler
+	useEffect(() => {
+        if (!map || !navigator.geolocation) return;
+        
+        const geolocation = new ol.Geolocation({
+			tracking: true,
+            trackingOptions: {
+                enableHighAccuracy: true,
+            },
+            projection: map.getView().getProjection(),
+        });
+		console.log(geolocation.getPosition());
+
+        const markerSource = new VectorSource();
+
+        const markerLayer = new VectorLayer({
+            source: markerSource,
+        });
+
+        map.addLayer(markerLayer);
+
+        geolocation.on('change:position', () => {
+            const position = geolocation.getPosition();
+            const markerFeature = new Feature({
+                geometry: new Point(position),
+            });
+            const markerStyle = new Style({
+				image: new CircleStyle({
+					radius: 6,
+					fill: new Fill({ color: '#3399CC' }),
+					stroke: new Stroke({ color: '#fff', width: 2 }),
+				  }),
+            });
+            markerFeature.setStyle(markerStyle);
+            markerSource.clear();
+            markerSource.addFeature(markerFeature);
+        });
+		return () => {
+            map.removeLayer(markerLayer);
+        };
+     
+    }, [map]);
+
+    // zoom buttons handler
+    const handleZoomIn = () => {
+        if (!map) return;
+        
+        let view = map.getView();
+        let currentZoom = view.getZoom();
+        
+        view.animate({
+          zoom: currentZoom + 1,
+          duration: 250,
+          easing: easeOut
+       });
     };
-    let mapObject = new ol.Map(options);
-    mapObject.setTarget(mapRef.current);
-    setMap(mapObject);
-    return () => mapObject.setTarget(undefined);
-  }, []);
-  // zoom change handler
-  useEffect(() => {
-    if (!map) return;
-    map.getView().setZoom(zoom);
-  }, [zoom]);
-  // center change handler
-  useEffect(() => {
-    if (!map) return;
-    map.getView().setCenter(center)
-  }, [center])
-  return (
-    <MapContext.Provider value={{ map }}>
-      <div ref={mapRef} className="ol-map">
-        {children}
-      </div>
-    </MapContext.Provider>
-  )
-}
+
+
+    const handleZoomOut = () => {
+      if (!map) return;
+      
+      let view = map.getView();
+      let currentZoom = view.getZoom();
+
+      view.animate({
+          zoom: currentZoom - 1,
+          duration: 250,
+          easing: easeIn
+       });
+    };
+
+	
+	return (
+	    <div className="container">
+		    <div ref={mapRef} className="ol-map" />
+		    <div className="zoom-buttons">
+		        <button onClick={handleZoomIn}>+</button>
+		        <button onClick={handleZoomOut}>-</button>
+		    </div>
+		    <MapContext.Provider value={{ map }}>
+			    {children}
+		    </MapContext.Provider>
+	    </div>)
+};
 export default Map;

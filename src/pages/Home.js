@@ -10,12 +10,20 @@ import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import '../App.css';
 import Map from './MyMap';
-
+import MapWithUserLocation from './MapWithUserLocation';
+import ReactWeather, { useOpenWeather } from 'react-open-weather';
+import { toUserResolution } from "ol/proj";
 
 const Info = () => {
   const [open1, setOpen1] = useState(false);
 
-  
+  const { data, isLoading, errorMessage } = useOpenWeather({
+    key: '45f45b327810774eeb82e452d6995911',
+    lat: '54.896870',
+    lon: '23.892429',
+    lang: 'lt',
+    unit: 'metric', // values are (metric, standard, imperial)
+  });
   return (
     <div
     className={`box stack-top duration-500`}>
@@ -25,7 +33,19 @@ const Info = () => {
           open1 ? "w-50 h-screen" : "w-10 h-20"
         } duration-500 text-gray-100 px-0 `}
       >
-        <div className="py-5 flex justify-end ">
+        {open1 &&(
+        <div className="animated-div duration-500" style={{ width: open1 ? "95%" : "0px" }}><ReactWeather
+        isLoading={isLoading}
+        errorMessage={errorMessage}
+        data={data}
+        lang="lt"
+        locationLabel="Kaunas"
+        unitsLabels={{ temperature: 'C', windSpeed: 'm/s' }}
+        showForecast
+      /></div>
+        
+        )}
+        <div className="py-5 flex justify-end">
           <IoChevronForward  
             size={26}
             className="cursor-pointer"
@@ -33,9 +53,11 @@ const Info = () => {
            
           />
         </div>
-
-      </div>
-
+        </div>
+      
+        
+        
+      
     </section>
     </div>
   );
@@ -71,7 +93,7 @@ const Gifts = () => {
 const Home = () => {
   const menus = [
     { name: "dashboard", link: "/MyMap", icon: MdOutlineDashboard },
-    { name: "user", icon: AiOutlineUser },
+    { name: "user", onclick:"", icon: AiOutlineUser },
     { name: "messages", link: "/", icon: FiMessageSquare },
     { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
     { name: "File Manager", link: "/", icon: FiFolder },
@@ -80,7 +102,7 @@ const Home = () => {
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
-  
+
     return (
     <section className="flex gap-0 main">
       <div
@@ -132,14 +154,10 @@ const Home = () => {
       <Info/>
       </div>
 
-      
-
 
       <div className="map">
-        <Map> 
-
-        </Map>
-      </div>
+      <Map />
+    </div>
 
     </section>
   );

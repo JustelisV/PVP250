@@ -12,7 +12,7 @@ import Map from "./pages/MyMap";
 const App = () => {
     let routes = useRoutes([
       { path: "/", element: <Home /> },
-      { path: "/MyMap", element: <Map /> },
+      
     ]);
     return routes;
 };
