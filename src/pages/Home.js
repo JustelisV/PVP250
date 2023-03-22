@@ -154,10 +154,17 @@ const Home = () => {
       <Info/>
       </div>
 
-
-      <div className="map">
+      
+      
+      <div id="map" className="map">
+      <div id="popup" className="ol-popup">
+      <a href="#" id="popup-closer" className="ol-popup-closer"></a>
+      <div id="popup-content"></div>
+      </div>
       <Map />
-    </div>
+        </div>
+
+    
 
     </section>
   );
