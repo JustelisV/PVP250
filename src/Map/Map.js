@@ -46,6 +46,7 @@ const Map = ({ children, zoom, center }) => {
 
         
 		return () => mapObject.setTarget(undefined);
+        
 	}, []);
 
     
@@ -154,7 +155,7 @@ const overlay = new Overlay({
             const coordinate = evt.coordinate;
             const hdms = toStringHDMS(toLonLat(coordinate));
           
-            content.innerHTML = '<form><input type="text"/> <input type="file"/></form><p>You clicked here:</p><code>' + hdms + '</code>';
+            content.innerHTML = '<p>You clicked here:</p><code>' + hdms + '</code>';
             overlay.setPosition(coordinate);
             map.addOverlay(overlay);
           });

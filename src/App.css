@@ -1,4 +1,14 @@
-
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}
 .box{
           
         position: fixed;
@@ -12,30 +22,89 @@
     .hidden{
     display:none;
     }
-    .main{
-    margin-left: 40px;
-    }
+.tabbed{
+  position: absolute;
+  margin-top: 50px;
+  height: 500px;
+}
+.Form{
+padding-top: 300px;
+padding-left: 100px;
+position: absolute;
+height: 100%;
+color: #757575;
 
+}
+#field{
+  padding: 50px;
+  position: absolute;
+  width: 500px;
+}
+.addbutton{
+position: absolute;
+left: 92%;
 
+}
+.giftbutton{
+  position: absolute;
+left: 92%;
+top: 8%;
+
+}
+div.pavadinimas{
+  position: absolute;
+  margin-top: 10px;
+}
+h1.pavadinimas{
+  text-transform: uppercase;
+  font-size: 50px;
+  font-weight: 900;
+}
+.sidebar{
+  filter: drop-shadow(10px 0px 6px #757575);
+
+}
+
+.daugiau{
+height: 580px;
+overflow: auto;
+
+}
 .map{
   height: 100%;
   width: 100%;
 }
 .button{
-  position: absolute;
+  position: fixed;
   display: flex-end;
   padding:20px;
   z-index: 99;
 }
 .animated-div {
+  margin-top: 80px;
+  right: 15px;
+  position: absolute;
   overflow: hidden;
   transition: width 0.5s ease-in-out 1s;
+
 }
 .w-50 {
     position: fixed;
     width: 50%;
     transition: width 0.5s height 0.5s ease-in-out 0.1s;
 }
+.closed {
+    position: absolute;
+    width: 25%;
+    z-index: 99;
+
+   }
+   .open {
+    position: absolute;
+    width: 35%;
+    z-index: 99;
+
+   }
 .w-10{
 
   position: fixed;
