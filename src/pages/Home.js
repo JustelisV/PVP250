@@ -1,151 +1,22 @@
 import React, { useState } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
-import { IoChevronForward } from "react-icons/io5";
-import { MdOutlineDashboard } from "react-icons/md";
-import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
-import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
 import '../App.css';
 import Map from './MyMap';
-import MapWithUserLocation from './MapWithUserLocation';
+
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
-import { toUserResolution } from "ol/proj";
-import IconButton from '@mui/material/IconButton';
+
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
-import Stack from '@mui/material/Stack';
 import { green } from '@mui/material/colors';
 import { grey } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import NavigationIcon from '@mui/icons-material/Navigation';
+
 import Typography from '@mui/material/Typography';
-import { useForm } from 'react-hook-form';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import Forma from './Forma';
 
-const SimpleForm = () => {
-  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  return (
-    <div>
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField className="field"
-        label="Name"
-        {...register('name', { required: true })}
-      />
-       <br></br>
-       <br></br>
-      <TextField className="field"
-        label="Last Name"
-        {...register('lastname', { required: true })}
-      />
-       <br></br>
-       <br></br>
-      <TextField className="field"
-        label="place"
-        {...register('place', { required: true })}
-      />
-      <br></br>
-      <br></br>
-      <TextField className="field"
-        label="random"
-        {...register('random', { required: true })}
-      />
-      <br></br>
-      <br></br>
-      <Button type="submit">Submit</Button>
-    </form>
-    </div>
-
-  );
-}
-
-const Info = () => {
-  const [open1, setOpen1] = useState(false);
-
-  const { data, isLoading, errorMessage } = useOpenWeather({
-    key: '45f45b327810774eeb82e452d6995911',
-    lat: '54.896870',
-    lon: '23.892429',
-    lang: 'lt',
-    unit: 'metric', // values are (metric, standard, imperial)
-  });
-  return (
-    <div
-    className={`box stack-top duration-500`}>
-    <section className="flex gap-6">
-      <div
-        className={`bg-[#3662c2] ${
-          open1 ? "w-50 h-screen" : "w-10 h-20"
-        } duration-500 text-gray-100 px-0 `}
-      >
-        {open1 &&(
-        <div className="animated-div duration-500" style={{ width: open1 ? "95%" : "0px" }}><ReactWeather
-        isLoading={isLoading}
-        errorMessage={errorMessage}
-        data={data}
-        lang="lt"
-        locationLabel="Kaunas"
-        unitsLabels={{ temperature: 'C', windSpeed: 'm/s' }}
-        showForecast
-      /></div>
-        
-        )}
-        <div className="py-5 flex justify-end">
-          <IoChevronForward  
-            size={26}
-            className="cursor-pointer"
-            onClick={() => setOpen1(!open1)}
-           
-          />
-        </div>
-        </div>
-      
-        
-        
-      
-    </section>
-    </div>
-  );
-};
-const Gifts = () => {
-
-  const [open2, setOpen2] = useState(false);
-  return (
-    <div
-    className={`box stack-top duration-500`}>
-    <section className="flex gap-6">
-      <div
-        className={`bg-[#c2b936] ${
-          open2 ? "w-screen h-screen" : "w-10 h-20 mt-24"
-        } duration-500 text-gray-100 px-0 `}
-      >
-        <div className="py-5 flex justify-end ">
-          <IoChevronForward  
-            size={26}
-            className="cursor-pointer"
-            onClick={() => setOpen2(!open2)}
-           
-          />
-        </div>
-
-      </div>
-
-    </section>
-    </div>
-  );
-};
 
 const Home = () => {
 
@@ -222,7 +93,7 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
         <div>
       <div className="pavadinimas"><h1 className="pavadinimas">Pridėti vietovę</h1></div>
         <div className="Form">
-          <SimpleForm></SimpleForm>
+          {/* <Forma></Forma> */}
           </div>
           
         </div>
