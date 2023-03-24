@@ -1,6 +1,6 @@
  
 	  .gift-section {
-        position: fixed;
+        position: absolute;
         top: 150px;
         display: flex;
         justify-content: space-between;
@@ -46,17 +46,17 @@
         background-color: #ff473d;
       }
       .points-balance {
-        
-        padding: 10px;
+        POSITION: absolute;
+        padding: 90px;
         margin-bottom: 20px;
-        bottom: 780px;
+        bottom: 40px;
         text-align: right;
       }
       
       .points-balance p {
         font-size: 1.2em;
         margin: 0;
-        position: fixed;
+        position: absolute;
         bottom: 700px;
         right: 25px;
       }
