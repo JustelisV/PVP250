@@ -29,7 +29,7 @@ import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
-
+import "../Features/Style.css";
 const SimpleForm = () => {
   const { register, handleSubmit } = useForm();
 
@@ -231,9 +231,68 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
       )}
      
       
-      {!open1 &&(
-           <div className="pavadinimas"><h1 className="pavadinimas">Donavos</h1></div>
+     {!open1 &&(
+           <><div className="pavadinimas"><h1 className="pavadinimas">Dovanos</h1></div>
+           <><div className="points-balance">
+                <p>Jūsų balansas: <span id="current-points">100</span> taškų</p>
+              </div><div className="gift-section">
+              <div class="row">
+  
+                <div class="column">
+                  <div className="gift-item">
+                    <img src="https://picsum.photos/200" />
+                    <h3>Gertuvė</h3>
+                    <p>Kaina: 150 taškų</p>
+                    <button className="redeem-button">Atsiimti</button>
+                  </div>
 
+                  <div className="gift-item">
+                    <img src="https://picsum.photos/200" />
+                    <h3>Puodelis</h3>
+                    <p>Kaina: 100 taškų</p>
+                    <button className="redeem-button">Atsiimti</button>
+                  </div>
+                  
+                </div>
+                  
+                <div class="column">
+                  <div className="gift-item">
+                    <img src="https://picsum.photos/200" />
+                    <h3>Kepurėlė</h3>
+                    <p>Kaina: 200 taškų</p>
+                    <button className="redeem-button">Atsiimti</button>
+                  </div>
+
+                  <div className="gift-item">
+                    <img src="https://picsum.photos/200" />
+                    <h3>Pakabukas</h3>
+                    <p>Kaina: 180 taškų</p>
+                    <button className="redeem-button">Atsiimti</button>
+                  </div>
+                  
+                </div>
+                  
+
+                <div class="column">
+                  <div className="gift-item">
+                    <img src="https://picsum.photos/200" />
+                    <h3>Maišelis</h3>
+                    <p>Kaina: 75 taškų</p>
+                    <button className="redeem-button">Atsiimti</button>
+                  </div>
+
+                  <div className="gift-item">
+                    <img src="https://picsum.photos/200" />
+                    <h3>Marškinėliai</h3>
+                    <p>Kaina: 450 taškų</p>
+                    <button className="redeem-button">Atsiimti</button>
+                  </div>
+
+                </div>
+                  
+
+                </div>
+                </div></></>
       )}
 
         <div className="py-3 flex justify-end addbutton">
