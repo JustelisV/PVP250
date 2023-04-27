@@ -1,8 +1,8 @@
 {
-  "homepage": "http://JustelisV.github.io/PVP250",
   "name": "pvp",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
+  "homepage": "http://JustelisV.github.io/PVP250",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
