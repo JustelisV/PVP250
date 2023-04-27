@@ -48,16 +48,16 @@
       .points-balance {
         POSITION: absolute;
         padding: 90px;
-        margin-bottom: 20px;
-        bottom: 40px;
+        bottom: 10px;
         text-align: right;
+        right: 25px;
       }
       
       .points-balance p {
         font-size: 1.2em;
         margin: 0;
         position: absolute;
-        bottom: 700px;
+        bottom: 680px;
         right: 25px;
       }
       
