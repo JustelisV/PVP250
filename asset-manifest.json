@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/PVP250/static/css/main.8dfcec73.css",
+    "main.js": "/PVP250/static/js/main.4da0f5fc.js",
+    "index.html": "/PVP250/index.html",
+    "main.8dfcec73.css.map": "/PVP250/static/css/main.8dfcec73.css.map",
+    "main.4da0f5fc.js.map": "/PVP250/static/js/main.4da0f5fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8dfcec73.css",
+    "static/js/main.4da0f5fc.js"
+  ]
+}
