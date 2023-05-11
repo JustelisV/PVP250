@@ -43,13 +43,17 @@ color: #757575;
 .addbutton{
 position: absolute;
 left: 92%;
-
+top: 7%;
 }
 .giftbutton{
   position: absolute;
 left: 92%;
-top: 8%;
-
+top: 15%;
+}
+.infobutton{
+  position: absolute;
+left: 92%;
+top: 23%;
 }
 div.pavadinimas{
   position: absolute;
@@ -60,6 +64,12 @@ h1.pavadinimas{
   font-size: 50px;
   font-weight: 900;
 }
+@media only screen and (max-width: 768px) {
+  h1.pavadinimas {
+    padding-left: 20%;
+  }
+}
+
 .sidebar{
   filter: drop-shadow(10px 0px 6px #757575);
 
@@ -105,6 +115,24 @@ overflow: auto;
     z-index: 99;
 
    }
+   @media only screen and (max-width: 768px) {
+    .open {
+      width: 85%;
+    }
+    .closed {
+      width: 0px;
+    }
+  }
+  
+  @media only screen and (min-width: 769px) {
+    .open {
+      width: 35%;
+    }
+    .closed {
+      width: 25%;
+    }
+  }
+  
 .w-10{
 
   position: fixed;

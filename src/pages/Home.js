@@ -29,6 +29,7 @@ import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import InfoIcon from '@mui/icons-material/Info';
 import "../Features/Style.css";
 const SimpleForm = () => {
   const { register, handleSubmit } = useForm();
@@ -76,7 +77,7 @@ const Home = () => {
 
   const [open, setOpen] = useState(true);
   const [open1, setOpen1] = useState(true);
-
+  const [open2, setOpen2] = useState(true);
   const customStyles = {
     fontFamily:  'Helvetica, sans-serif',
     gradientStart:  '#59a200',
@@ -106,13 +107,14 @@ const Home = () => {
     return (
       <div>
 <section className="flex gap-0 main z-99">
+      
       <div
         className={`bg-[#8faf5a] min-h-screen sidebar ${
-          open && open1 ? "closed" : "open"
+          open && open1 && open2? "closed" : "open"
         } duration-500 text-gray-100 px-4`}
       >
        
-        {open && open1 &&(
+        {open && open1 && (
           <div>
            <div className="pavadinimas"><h1 className="pavadinimas">TvarkIS</h1></div>
 <div className="animated-div duration-500" style={{ width: open ? "95%" : "0px" }}>
@@ -143,6 +145,7 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
       </div>
           </div>
         )}
+
       {!open &&(
         <div>
       <div className="pavadinimas"><h1 className="pavadinimas">Pridėti vietovę</h1></div>
@@ -238,18 +241,20 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
       </Fab>
     </Box>
         </div>
+        <div className="py-3 flex justify-end infobutton">
+          <Box sx={{ '& > :not(style)': { m: 1 } }}>
+      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => setOpen2(!open2)}>
+      <InfoIcon />
+      </Fab>
+    </Box>
+        </div>
       </div>
 
       
       <div className="tabbed">
       </div>
 
-      
-      
-
-
     
-
     </section>
     <div id="map" className="map">
       <div id="popup" className="ol-popup">
