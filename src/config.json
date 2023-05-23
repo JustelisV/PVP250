@@ -63,9 +63,18 @@
           }
         ]
       },
-    "kansasCityLonLat": [23.892429,54.896870],
-    "blueSpringsLonLat": [23.892429,54.896870],
-    "markerImage24" : "https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-47-24.png",
-    "markerImage32" : "https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-47-32.png",
+    "Kaunas": [23.892429,54.896870],
+    "Kaunas2": [23.942814, 54.902280],
+    "Kaunas3": [23.926291, 54.902771],
+    "Kaunas4": [23.939681, 54.902574],
+    "Kaunas5": [23.915595, 54.897675],
+    "Kaunas6": [23.918535, 54.898847],
+    "Kaunas7": [23.912237, 54.900131],
+    "Kaunas8": [23.913481, 54.897762],
+    "Kaunas9": [23.921549, 54.900575],
+
+
+    "markerImage24" : "https://www.iconfinder.com/icons/1564524/download/png/48",
+    "markerImage32" : "https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_pin-32.png",
     "markerImage64" : "https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-47-64.png"
 }

@@ -14,7 +14,7 @@ import mapConfig from "../config.json";
 
 const geojsonObject = mapConfig.geojsonObject;
 const geojsonObject2 = mapConfig.geojsonObject2;
-const markersLonLat = [mapConfig.kansasCityLonLat, mapConfig.blueSpringsLonLat];
+const markersLonLat = [mapConfig.Kaunas, mapConfig.Kaunas2, mapConfig.Kaunas3, mapConfig.Kaunas4, mapConfig.Kaunas5, mapConfig.Kaunas6,mapConfig.Kaunas7,mapConfig.Kaunas8, mapConfig.Kaunas9];
 
 function addMarkers(lonLatArray) {
   var iconStyle = new Style({
@@ -40,7 +40,7 @@ const MyMap = () => {
 
   const [showLayer1, setShowLayer1] = useState(true);
   const [showLayer2, setShowLayer2] = useState(true);
-  const [showMarker, setShowMarker] = useState(false);
+  const [showMarker, setShowMarker] = useState(true);
 
   const [features, setFeatures] = useState(addMarkers(markersLonLat));
 
@@ -49,26 +49,6 @@ const MyMap = () => {
       <Map center={fromLonLat(center)} zoom={zoom}>
         <Layers>
           <TileLayer source={osm()} zIndex={0} />
-          {showLayer1 && (
-            <VectorLayer
-              source={vector({
-                features: new GeoJSON().readFeatures(geojsonObject, {
-                  featureProjection: get("EPSG:3857"),
-                }),
-              })}
-              style={FeatureStyles.MultiPolygon}
-            />
-          )}
-          {showLayer2 && (
-            <VectorLayer
-              source={vector({
-                features: new GeoJSON().readFeatures(geojsonObject2, {
-                  featureProjection: get("EPSG:3857"),
-                }),
-              })}
-              style={FeatureStyles.MultiPolygon}
-            />
-          )}
           {showMarker && <VectorLayer source={vector({ features })} />}
         </Layers>
         <Controls>

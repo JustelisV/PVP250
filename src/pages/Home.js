@@ -65,7 +65,7 @@ const SimpleForm = () => {
       />
       <br></br>
       <br></br>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" className="submitbttn">Submit</Button>
     </form>
     </div>
 
@@ -77,7 +77,13 @@ const Home = () => {
 
   const [open, setOpen] = useState(true);
   const [open1, setOpen1] = useState(true);
+<<<<<<< Updated upstream
   const [open2, setOpen2] = useState(true);
+=======
+  const [addpin, setAddpin] = useState(true);
+
+
+>>>>>>> Stashed changes
   const customStyles = {
     fontFamily:  'Helvetica, sans-serif',
     gradientStart:  '#59a200',
@@ -150,7 +156,7 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
         <div>
       <div className="pavadinimas"><h1 className="pavadinimas">Pridėti vietovę</h1></div>
         <div className="Form">
-          {/* <SimpleForm></SimpleForm> */}
+          <SimpleForm></SimpleForm>
           </div>
           
         </div>
@@ -257,9 +263,18 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
     
     </section>
     <div id="map" className="map">
-      <div id="popup" className="ol-popup">
+      <div id="popup" className="ol-popup location">
       <a href="#" id="popup-closer" className="ol-popup-closer"></a>
-      <div id="popup-content"></div>
+      <div className="py-3 flex justify-end addbutton">
+          <Box sx={{ '& > :not(style)': { m: 1 } }} id="popup-adder">
+      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => setOpen(!open)}>
+      <AddLocationAltIcon />
+      </Fab>
+    </Box>
+        </div>
+      <div id="popup-content">
+        
+      </div>
       </div>
       <Map />
         </div>

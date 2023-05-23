@@ -55,6 +55,11 @@ top: 15%;
 left: 92%;
 top: 23%;
 }
+.location{
+  filter: drop-shadow(10px 0px 6px #757575);
+  color: green;
+  padding: 20px;
+}
 div.pavadinimas{
   position: absolute;
   margin-top: 10px;
@@ -198,3 +203,13 @@ overflow: auto;
       .popover-body {
         min-width: 276px;
       }
+
+  .field{
+    position: fixed;
+    width: 450%;
+    background: rgb(200, 200, 200);
+    padding: 100px;
+  }
+  .submitbttn{
+    color: rgb(200, 200, 200);
+  }

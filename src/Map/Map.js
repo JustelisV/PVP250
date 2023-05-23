@@ -5,13 +5,15 @@ import { fromLonLat } from 'ol/proj';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import { Vector as VectorLayer } from 'ol/layer';
+import TileLayer from 'ol/layer/Tile';
+import OSM from 'ol/source/OSM';
 import { Vector as VectorSource } from 'ol/source';
 import geolocated from 'react-geolocated';
 import * as ol from "ol";
 import {easeOut} from 'ol/easing';
 import {easeIn} from 'ol/easing';
 import Geolocation from 'ol/Geolocation';
-import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style.js';
+import {Circle as CircleStyle, Fill, Stroke, Style, Icon} from 'ol/style.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Overlay from 'ol/Overlay.js';
 import {toLonLat} from 'ol/proj.js';
@@ -35,7 +37,11 @@ const Map = ({ children, zoom, center }) => {
 	useEffect(() => {
 		let options = {
 			view: new ol.View({ zoom, center }),
-			layers: [],
+			layers: [
+        new TileLayer({
+          source: new OSM(),
+        }),
+      ],
 			controls: [],
 			overlays: []
 		};
@@ -49,7 +55,18 @@ const Map = ({ children, zoom, center }) => {
         
 	}, []);
 
-    
+
+
+
+  // //map.addLayer(vectorLayer);
+  // map.on('click', function(event) {
+  //   if (window.confirm('Do you want to add a pin here?')) {
+  //     const feature = new ol.Feature({
+  //       geometry: new Point(event.coordinate)
+  //     });
+  //     vectorSource.addFeature(feature);
+  //   }
+  // });
    
       // geolocation change handler
 	useEffect(() => {
@@ -121,15 +138,36 @@ const Map = ({ children, zoom, center }) => {
           easing: easeIn
        });
     };
+    const addPin = (coordinate) => {
+      const pinStyle = new Style({
+        image: new Icon({
+          anchor: [0.5, 1],
+          src: 'src/assets/pin.png',
+        }),
+      });
+      const pinFeature = new Feature({
+        geometry: new Point(coordinate),
+      });
+      pinFeature.setStyle(pinStyle);
+      const vectorSource = new VectorSource({
+        features: [pinFeature],
+      });
+      const vectorLayer = new VectorLayer({
+        source: vectorSource,
+      });
+      map.addLayer(vectorLayer);
+    };
+    useEffect(() => {
+      if (!map) return;
 
-    window.onload = function(){
+     
+     
+      window.onload = function(){
+        const container = document.getElementById('popup');
+        const content = document.getElementById('popup-content');
+        const closer = document.getElementById('popup-closer');
+        const adder = document.getElementById('popup-adder');
         /**
- * Elements that make up the popup.
- */
-const container = document.getElementById('popup');
-const content = document.getElementById('popup-content');
-const closer = document.getElementById('popup-closer');
-/**
  * Create an overlay to anchor the popup to the map.
  */
 const overlay = new Overlay({
@@ -145,21 +183,40 @@ const overlay = new Overlay({
    * Add a click handler to hide the popup.
    * @return {boolean} Don't follow the href.
    */
-  closer.onclick = function () {
+
+
+
+    closer.onclick = function () {
     overlay.setPosition(undefined);
     closer.blur();
     return false;
   };
+
   
         map.on('singleclick', function (evt) {
             const coordinate = evt.coordinate;
-            const hdms = toStringHDMS(toLonLat(coordinate));
-          
+            const hdms = toStringHDMS(toLonLat(coordinate));     
+            adder.onclick = function () {
+              addPin(coordinate);
+
+              return false;
+            };
             content.innerHTML = '<p>You clicked here:</p><code>' + hdms + '</code>';
             overlay.setPosition(coordinate);
             map.addOverlay(overlay);
           });
-    }
+
+  }
+
+
+  return () => {
+          map.removeLayer(overlay);
+      };
+   
+  }, [map]);
+
+
+
 	return (
 	    <div className="container">
 		    <div ref={mapRef} className="ol-map" />
@@ -167,6 +224,7 @@ const overlay = new Overlay({
 		        <button onClick={handleZoomIn}>+</button>
 		        <button onClick={handleZoomOut}>-</button>
 		    </div>
+       
 		    <MapContext.Provider value={{ map }}>
 			    {children}
 		    </MapContext.Provider>
