@@ -59,6 +59,7 @@ div.pavadinimas{
   position: absolute;
   margin-top: 10px;
   transition: all 0.25s ease-in-out 0.1s;
+
 }
 h1.pavadinimas{
   text-transform: uppercase;
@@ -68,7 +69,7 @@ h1.pavadinimas{
 
 
 .sidebar{
-  filter: drop-shadow(10px 0px 6px #757575);
+  filter: drop-shadow(10px 0px 6px #58693e);
 
 
 }

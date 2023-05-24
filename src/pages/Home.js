@@ -244,7 +244,7 @@ const Home = () => {
 
 <div className="py-3 flex justify-end addbutton">
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
-      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => setOpen(!open)}>
+      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => {setOpen(!open); setOpen1(true); setOpen2(true)}}>
       <AddLocationAltIcon />
       </Fab>
     </Box>
@@ -255,14 +255,14 @@ const Home = () => {
 
         <div className="py-3 flex justify-end giftbutton">
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
-      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => setOpen1(!open1)}>
+      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => {setOpen1(!open1); setOpen(true); setOpen2(true)}}>
       <CardGiftcardIcon />
       </Fab>
     </Box>
         </div>
         <div className="py-3 flex justify-end infobutton">
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
-      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => setOpen2(!open2)}>
+      <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => {setOpen2(!open2); setOpen1(true); setOpen(true)}}>
       <InfoIcon />
       </Fab>
     </Box>

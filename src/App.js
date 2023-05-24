@@ -6,12 +6,13 @@ import {
   useRoutes,
 } from "react-router-dom";
 import Home from "./pages/Home";
-import Map from "./pages/MyMap";
+import Registration from "./pages/Registration";
 
 
 const App = () => {
     let routes = useRoutes([
       { path: "/", element: <Home /> },
+      { path: "/Registration", element: <Registration /> }
       
     ]);
     return routes;

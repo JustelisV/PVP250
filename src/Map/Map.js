@@ -44,7 +44,8 @@ const Map = ({ children, zoom, center }) => {
         }),
       ],
 			controls: [],
-			overlays: []
+			overlays: [],
+      moveTolerance: 5
 		};
 
 		let mapObject = new ol.Map(options);
@@ -237,7 +238,7 @@ map.on('pointermove', function (e) {
   };
 
   
-        map.on('singleclick', function (evt) {
+        map.on('click', function (evt) {
             const coordinate = evt.coordinate;
             const hdms = toStringHDMS(toLonLat(coordinate));     
             adder.onclick = function () {
