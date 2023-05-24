@@ -28,18 +28,13 @@
   height: 500px;
 }
 .Form{
-padding-top: 300px;
-padding-left: 100px;
+top: 20%;
 position: absolute;
-height: 100%;
+width: 20%;
 color: #757575;
 
 }
-#field{
-  padding: 50px;
-  position: absolute;
-  width: 500px;
-}
+
 .addbutton{
 position: absolute;
 left: 92%;
@@ -63,26 +58,32 @@ top: 23%;
 div.pavadinimas{
   position: absolute;
   margin-top: 10px;
+  transition: all 0.25s ease-in-out 0.1s;
 }
 h1.pavadinimas{
   text-transform: uppercase;
   font-size: 50px;
   font-weight: 900;
 }
-@media only screen and (max-width: 768px) {
-  h1.pavadinimas {
-    padding-left: 20%;
-  }
-}
+
 
 .sidebar{
   filter: drop-shadow(10px 0px 6px #757575);
 
+
+}
+.buttons{
+  position: flex;
+}
+.forma{
+  position: relative;
 }
 
+.placeholder{
+  margin-top: 20px;
+}
 .daugiau{
-height: 580px;
-overflow: auto;
+  overflow: auto;
 
 }
 .map{
@@ -127,14 +128,16 @@ overflow: auto;
     .closed {
       width: 0px;
     }
+
   }
+  
   
   @media only screen and (min-width: 769px) {
     .open {
       width: 35%;
     }
     .closed {
-      width: 25%;
+      width: 0%;
     }
   }
   
@@ -200,9 +203,9 @@ overflow: auto;
         font-weight: bold;
         text-shadow: black 0.1em 0.1em 0.2em;
       }
-      .popover-body {
+      /* .popover-body {
         min-width: 276px;
-      }
+      } */
 
   .field{
     position: fixed;

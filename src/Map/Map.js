@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Overlay from 'ol/Overlay.js';
 import {toLonLat} from 'ol/proj.js';
 import {toStringHDMS} from 'ol/coordinate.js';
+import * as bootstrap from 'bootstrap';
 
 
 const Map = ({ children, zoom, center }) => {
@@ -184,6 +185,49 @@ const overlay = new Overlay({
    * @return {boolean} Don't follow the href.
    */
 
+  const element = document.getElementById('popup');
+  window.bootstrap = require("bootstrap");
+
+  const popup = new Overlay({
+    element: element,
+    positioning: 'bottom-center',
+    stopEvent: false,
+  });
+  map.addOverlay(popup);
+  
+  let popover;
+  function disposePopover() {
+    if (popover) {
+      popover.dispose();
+      popover = undefined;
+    }
+  }
+  // change mouse cursor when over marker
+map.on('pointermove', function (e) {
+  const pixel = map.getEventPixel(e.originalEvent);
+  const hit = map.hasFeatureAtPixel(pixel);
+  map.getTarget().style.cursor = hit ? 'pointer' : '';
+});
+// Close the popup when the map is moved
+  map.on('movestart', disposePopover);
+  // display popup on click
+  map.on('click', function (evt) {
+    const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+      return feature;
+    });
+    disposePopover();
+    if (!feature) {
+      return;
+    }
+    popup.setPosition(evt.coordinate);
+    popover = new bootstrap.Popover(element, {
+      placement: 'auto',
+      html: false,
+      title: "hello",
+      content:"hello hello"
+    });
+    popover.show();
+  });
 
 
     closer.onclick = function () {
@@ -224,6 +268,7 @@ const overlay = new Overlay({
 		        <button onClick={handleZoomIn}>+</button>
 		        <button onClick={handleZoomOut}>-</button>
 		    </div>
+        <div id="popup" className="custom-popover"></div>
        
 		    <MapContext.Provider value={{ map }}>
 			    {children}

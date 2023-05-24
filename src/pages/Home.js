@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
+import React, { useRef, useEffect, useState } from 'react';import { HiMenuAlt3 } from "react-icons/hi";
 import { IoChevronForward } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
@@ -24,13 +23,13 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
-import Typography from '@mui/material/Typography';
 import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import InfoIcon from '@mui/icons-material/Info';
 import "../Features/Style.css";
+
 const SimpleForm = () => {
   const { register, handleSubmit } = useForm();
 
@@ -39,7 +38,7 @@ const SimpleForm = () => {
   };
 
   return (
-    <div>
+    <div className='forma'>
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField className="field"
         label="Name"
@@ -77,13 +76,24 @@ const Home = () => {
 
   const [open, setOpen] = useState(true);
   const [open1, setOpen1] = useState(true);
-<<<<<<< Updated upstream
-  const [open2, setOpen2] = useState(true);
-=======
+  const [open2, setOpen2] = useState(false);
   const [addpin, setAddpin] = useState(true);
 
+  // Assuming you have a state to track the width of the parent div
+  const [parentDivWidth, setParentDivWidth] = React.useState(0);
 
->>>>>>> Stashed changes
+  // Function to update the parent div width
+  const handleResize = () => {
+    const width = document.getElementById('sidebar').clientWidth;
+    setParentDivWidth(width);
+  };
+  React.useEffect(() => {
+    handleResize(); // Initial width update
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize); // Cleanup on component unmount
+  }, []);
+
+
   const customStyles = {
     fontFamily:  'Helvetica, sans-serif',
     gradientStart:  '#59a200',
@@ -115,16 +125,18 @@ const Home = () => {
 <section className="flex gap-0 main z-99">
       
       <div
-        className={`bg-[#8faf5a] min-h-screen sidebar ${
+      id="sidebar"
+        className={`bg-[hsl(83,35%,52%)] min-h-screen sidebar ${
           open && open1 && open2? "closed" : "open"
         } duration-500 text-gray-100 px-4`}
-      >
-       
-        {open && open1 && (
+      > {open && open1 && (
           <div>
-           <div className="pavadinimas"><h1 className="pavadinimas">TvarkIS</h1></div>
-<div className="animated-div duration-500" style={{ width: open ? "95%" : "0px" }}>
-          <ReactWeather
+           <div className="pavadinimas" style={{ left: !open2 ? "45px" : "80px", color: !open2 ? "white" : "rgb(50 50 60)" }}><h1 className="pavadinimas" >TVARKIS</h1></div>
+<div  className="animated-div duration-500" style={{ width: open ? "95%" : "0%" }}>
+{!open2 && (
+        <div>
+          {<div className="sdbr">
+            <ReactWeather
         theme={customStyles}
         isLoading={isLoading}
         errorMessage={errorMessage}
@@ -134,19 +146,17 @@ const Home = () => {
         unitsLabels={{ temperature: 'C', windSpeed: 'm/s' }}
         showForecast={false}
       />
+
       <div className="daugiau">
-      <Typography paragraph>
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur. Urna condimentum mattis pellentesque id nibh tortor id. Id venenatis a condimentum vitae sapien pellentesque habitant. Non arcu risus quis varius quam. Risus pretium quam vulputate dignissim suspendisse in. Eget aliquet nibh praesent tristique magna. Egestas purus viverra accumsan in nisl. Egestas congue quisque egestas diam in arcu cursus euismod. Cras adipiscing enim eu turpis egestas pretium.
+      <img className= "placeholder" src={"https://picsum.photos/"+parentDivWidth + "/400"}></img>
+          <img className= "placeholder" src={"https://picsum.photos/"+parentDivWidth + "/400"}></img>
 
-Nisi quis eleifend quam adipiscing. Porta lorem mollis aliquam ut porttitor leo a diam. Mi ipsum faucibus vitae aliquet nec ullamcorper sit amet. Nisi vitae suscipit tellus mauris a. Ornare quam viverra orci sagittis eu. Dictumst quisque sagittis purus sit amet volutpat consequat. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam. Pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Hendrerit dolor magna eget est lorem ipsum dolor. Platea dictumst quisque sagittis purus. Cursus risus at ultrices mi tempus imperdiet. Aliquet eget sit amet tellus cras. Amet purus gravida quis blandit turpis cursus in hac habitasse. Viverra accumsan in nisl nisi scelerisque eu. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit. Gravida quis blandit turpis cursus. Ornare arcu dui vivamus arcu felis bibendum ut tristique. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Sed blandit libero volutpat sed. Porttitor lacus luctus accumsan tortor posuere ac ut consequat.
-
-Dictum at tempor commodo ullamcorper a lacus vestibulum sed. Pellentesque elit eget gravida cum sociis natoque penatibus. Pellentesque dignissim enim sit amet venenatis urna cursus eget. Eget mi proin sed libero enim sed. Pharetra convallis posuere morbi leo urna molestie at. Sed augue lacus viverra vitae. Malesuada proin libero nunc consequat interdum varius sit amet mattis. Suspendisse ultrices gravida dictum fusce ut. Suspendisse in est ante in nibh mauris cursus. Morbi tempus iaculis urna id volutpat lacus. Turpis egestas sed tempus urna et pharetra pharetra. Lectus sit amet est placerat in. At in tellus integer feugiat scelerisque varius morbi enim nunc. In nulla posuere sollicitudin aliquam ultrices sagittis orci a. Amet consectetur adipiscing elit duis tristique. Orci porta non pulvinar neque laoreet. Tincidunt eget nullam non nisi est sit. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Et ligula ullamcorper malesuada proin libero. Non enim praesent elementum facilisis.
-
-Nunc vel risus commodo viverra. Vitae aliquet nec ullamcorper sit amet. Et malesuada fames ac turpis. Leo urna molestie at elementum. Interdum velit euismod in pellentesque. Egestas congue quisque egestas diam. Imperdiet sed euismod nisi porta lorem mollis aliquam ut. Sed sed risus pretium quam. Molestie at elementum eu facilisis sed odio morbi quis. A lacus vestibulum sed arcu non odio euismod.
-
-Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio facilisis mauris sit amet massa vitae tortor. Gravida in fermentum et sollicitudin ac orci phasellus egestas. Sociis natoque penatibus et magnis. Imperdiet dui accumsan sit amet nulla. Lobortis feugiat vivamus at augue eget. Arcu cursus euismod quis viverra nibh cras pulvinar. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Etiam non quam lacus suspendisse faucibus. Egestas pretium aenean pharetra magna ac. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar.
-          </Typography>
       </div>
+            
+            
+            </div>}
+        </div>
+      )}
 
       </div>
           </div>
@@ -229,7 +239,10 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
                 </div></></>
       )}
 
-        <div className="py-3 flex justify-end addbutton">
+<div className='buttons'>
+
+
+<div className="py-3 flex justify-end addbutton">
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
       <Fab sx={{ color: green[500] }} aria-label="add" onClick={() => setOpen(!open)}>
       <AddLocationAltIcon />
@@ -254,11 +267,12 @@ Ut venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio faci
       </Fab>
     </Box>
         </div>
+
+</div>
+        
       </div>
 
-      
-      <div className="tabbed">
-      </div>
+    
 
     
     </section>
