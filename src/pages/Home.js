@@ -146,13 +146,50 @@ const Home = () => {
         unitsLabels={{ temperature: 'C', windSpeed: 'm/s' }}
         showForecast={false}
       />
+      <div className="daugiau" style={{ overflow: 'auto', maxHeight: '600px' }}>
+  <img className="placeholder" src={"https://i.ibb.co/Fgx3gpK/reklama.png"+parentDivWidth } />
+  <img className="placeholder" src={"https://i.ibb.co/Fgx3gpK/reklama.png"+parentDivWidth } />
+  <h3 class="bold-heading">What will happen to the Earth in 100 years if humans continue to pollute nature?</h3>
+  <h3>
+  <h3 class="bold-text">25 years from now (2048):</h3> If people continue to pollute at the current rate, we can expect to see more extreme weather patterns, rising sea levels, and a decrease in biodiversity. Climate change will continue to have devastating effects on ecosystems and species, leading to potential mass extinctions.
+  <h3 class="bold-text">50 years from now (2073):</h3> The effects of climate change will become more severe, with rising temperatures causing widespread droughts, wildfires, and crop failures. The world's oceans will continue to warm, leading to further coral bleaching and the collapse of fisheries. Human populations will increasingly face water and food shortages, displacement, and health risks due to air pollution and disease.
+  <h3 class="bold-text">75 years from now (2098):</h3> If the current rate of pollution continues, many low-lying areas of the world will become uninhabitable due to rising sea levels, displacing millions of people. Food and water shortages will become widespread, leading to conflicts over resources. The world's oceans will be more acidic, causing significant damage to marine ecosystems, and increasing numbers of species will become extinct.
+  <h3 class="bold-text">100 years from now (2123):</h3> The effects of pollution will be catastrophic if we continue at the current rate. The world's oceans will be largely devoid of life, and many species on land will have become extinct. Large areas of the planet will be uninhabitable due to extreme weather, food and water shortages, and disease. The human population will likely have declined significantly, and global society will have changed dramatically in order to adapt to the new reality.
 
-      <div className="daugiau">
-      <img className= "placeholder" src={"https://picsum.photos/"+parentDivWidth + "/400"}></img>
-          <img className= "placeholder" src={"https://picsum.photos/"+parentDivWidth + "/400"}></img>
+<h3 class="bold-heading">Some additional details on what could happen if we don't take action to reduce pollution:</h3>
+•	Increased frequency and severity of natural disasters such as hurricanes, tornadoes, and floods due to the warming of the planet and changes in precipitation patterns.
+•	The loss of many key ecosystem services such as pollination, soil fertility, and water filtration, leading to further declines in agricultural productivity and food security.
+•	The spread of infectious diseases due to warmer temperatures, increased air pollution, and changes in the distribution of disease-carrying organisms such as mosquitoes and ticks.
+•	The displacement of millions of people due to the loss of habitable land, leading to mass migration and potential conflict over resources.
+•	The increased risk of geopolitical instability due to competition over dwindling resources such as water, arable land, and energy.
+•	The potential collapse of key economic sectors such as agriculture, fishing, and tourism, leading to widespread unemployment and economic instability.
+Overall, the consequences of continued pollution are dire and will require significant action on a global scale to address. It is crucial that we take steps to reduce our emissions and transition to more sustainable and environmentally friendly practices to avoid the worst outcomes.
 
-      </div>
-            
+<h3 class="bold-heading">How can people contribute to earth conservation in practice?</h3>
+There are many ways that individuals can contribute to conserving the Earth's natural resources and reducing pollution. Here are some practical tips that you can implement in your daily life:
+1.	Reduce your energy consumption: Turn off lights and appliances when not in use, use energy-efficient light bulbs, and lower your thermostat a few degrees in the winter and raise it in the summer.
+2.	Reduce your water usage: Fix any leaks in your home, take shorter showers, turn off the faucet while brushing your teeth, and water your lawn only when necessary.
+3.	Reduce your waste: Recycle as much as possible, compost food scraps, and avoid buying single-use plastic products.
+4.	Use eco-friendly transportation: Walk, bike, or take public transportation when possible, and carpool with others to reduce emissions.
+5.	Use environmentally friendly products: Choose products that are made from sustainable materials, use natural ingredients, and have minimal packaging.
+6.	Eat a plant-based diet: Reduce your consumption of meat and dairy, which are resource-intensive and contribute to greenhouse gas emissions.
+7.	Support renewable energy: Install solar panels on your home or purchase renewable energy from your utility company.
+8.	Support conservation efforts: Donate to organizations that protect the environment, participate in community cleanup events, and support policies that promote conservation.
+9.	Reduce your carbon footprint: Offset your carbon emissions by supporting projects that reduce greenhouse gas emissions, such as reforestation and clean energy projects.
+10.	Spread awareness: Educate others about the importance of conservation and encourage them to take action to protect the environment.
+11.	Support local businesses: Choose to buy products from local businesses that prioritize sustainability and environmental responsibility.
+12.	Plant trees: Trees absorb carbon dioxide and provide essential habitat for wildlife. Consider planting trees in your yard, neighbourhood, or local park.
+13.	Use reusable products: Choose reusable products over disposable ones. This includes things like reusable water bottles, coffee cups, and shopping bags.
+14.	Conserve resources: Turn off the faucet while washing dishes, fix any leaks in your home, and use a rain barrel to collect water for your garden.
+15.	Support green initiatives: Support political leaders and organizations that prioritize environmental protection and sustainability. Vote for policies that promote conservation and sustainable development.
+16.	Use natural cleaning products: Avoid using harsh chemicals in your home by using natural cleaning products made from ingredients like vinegar, baking soda, and lemon.
+17.	Choose sustainable clothing: Look for clothing made from sustainable and organic materials or choose to shop second-hand.
+18.	Reduce your paper usage: Opt for electronic bills, use digital documents instead of printing, and choose recycled paper products when necessary.
+19.	Volunteer: Volunteer for local conservation organizations or participate in community events that promote sustainability and environmental responsibility.
+20.	Practice sustainable tourism: When traveling, choose eco-friendly accommodations, support local businesses, and respect the local environment and culture.
+By implementing these practical tips, individuals can play an important role in conserving the Earth's natural resources and reducing pollution. Every small action can make a difference in the effort to create a more sustainable future for us and future generations.
+
+</h3></div>
             
             </div>}
         </div>
@@ -184,14 +221,14 @@ const Home = () => {
   
                 <div class="column">
                   <div className="gift-item">
-                    <img src="https://picsum.photos/200" />
+                  <img src="https://i.ibb.co/hWcWkr4/gertuve.png" />
                     <h3>Gertuvė</h3>
                     <p>Kaina: 150 taškų</p>
                     <button className="redeem-button">Atsiimti</button>
                   </div>
 
                   <div className="gift-item">
-                    <img src="https://picsum.photos/200" />
+                    <img src="https://i.ibb.co/v1jPrDn/puodelis.png" />
                     <h3>Puodelis</h3>
                     <p>Kaina: 100 taškų</p>
                     <button className="redeem-button">Atsiimti</button>
@@ -201,9 +238,17 @@ const Home = () => {
                   
                 <div class="column">
                   <div className="gift-item">
-                    <img src="https://picsum.photos/200" />
+                    <img src="https://i.ibb.co/jTNBW5x/kepure.png" />
                     <h3>Kepurėlė</h3>
                     <p>Kaina: 200 taškų</p>
+                    <button className="redeem-button">Atsiimti</button>
+                  </div>
+
+                  <div class="column">
+                  <div className="gift-item">
+                    <img src="https://i.ibb.co/n7ZpSBK/maisas.png" />
+                    <h3>Maišelis</h3>
+                    <p>Kaina: 75 taškų</p>
                     <button className="redeem-button">Atsiimti</button>
                   </div>
 
@@ -215,15 +260,6 @@ const Home = () => {
                   </div>
                   
                 </div>
-                  
-
-                <div class="column">
-                  <div className="gift-item">
-                    <img src="https://picsum.photos/200" />
-                    <h3>Maišelis</h3>
-                    <p>Kaina: 75 taškų</p>
-                    <button className="redeem-button">Atsiimti</button>
-                  </div>
 
                   <div className="gift-item">
                     <img src="https://picsum.photos/200" />
